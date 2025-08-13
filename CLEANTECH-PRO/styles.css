@@ -1,0 +1,189 @@
+/* --- Global Styles & Box Model Reset --- */
+
+/* 
+ * For a foundational best practice. 
+ * 'border-box' tells the browser to include padding and border
+ * in the element's total width and height. This makes layout math
+ * much more intuitive. Without this, a div with width: 100px and 
+ * padding: 10px would actually be 120px wide (100px + 10px left + 10px right).
+ * With border-box, it stays 100px wide, and the content area inside shrinks.
+ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* A light grey background for the whole page */
+    color: #333;
+}
+
+/* --- Utility & Layout Classes --- */
+
+/* 
+ * A container to center our content and provide consistent spacing.
+ * max-width: Prevents the content from becoming too wide on large screens.
+ * margin: 0 auto; A classic trick to center a block-level element.
+ * padding: 0 20px; BOX MODEL: This adds 20px of space on the left and right
+ * INSIDE the container, so content never touches the screen edges.
+ */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation Styling --- */
+
+header {
+    background: #fff;
+    color: #333;
+    padding: 1rem 0; /* BOX MODEL: 1rem of space above and below the content inside the header */
+    border-bottom: 3px solid #007BFF; /* BOX MODEL: A visible border */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Use flexbox for simple horizontal alignment */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #007BFF; /* Highlighting the "PRO" part */
+}
+
+nav ul {
+    list-style-type: none; /* Removes the default list bullets */
+    display: flex;
+    gap: 20px; /* Modern way to add space between flex items */
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px; /* BOX MODEL: Adds clickable space around the link text */
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #007BFF;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+}
+
+
+/* --- Hero Section Styling --- */
+
+.hero {
+    background: #007BFF; /* A strong, primary background color */
+    color: #fff;
+    /* BOX MODEL: Large padding to create a visually impactful section */
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px; /* BOX MODEL: Space between the heading and the paragraph below */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto; /* BOX MODEL: Centers the paragraph and adds space below it */
+}
+
+.button {
+    display: inline-block; /* Allows us to apply padding, margin, etc. */
+    background: #fff;
+    color: #007BFF;
+    /* BOX MODEL: This padding creates the button's size around the text */
+    padding: 12px 25px; 
+    border: 2px solid #fff; /* BOX MODEL: A visible border */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: transparent;
+    color: #fff;
+}
+
+
+/* --- Services Section & Card Styling (THE BOX MODEL SHOWCASE) --- */
+
+.services-section {
+    padding: 80px 0; /* BOX MODEL: Vertical space for the whole section */
+}
+
+.services-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px; /* BOX MODEL: Space between the title and the cards */
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Spaces the cards apart */
+    flex-wrap: wrap; /* Allows cards to wrap to the next line on smaller screens */
+}
+
+/* 
+ * This is the core demonstration of the Box Model.
+ * Let's visualize the layers from the inside out:
+ * 1. CONTENT: The `h3` and `p` text.
+ * 2. PADDING: 25px of empty space inside the card, pushing the content away from the edges.
+ * 3. BORDER: A 1px solid grey line that encloses the padding and content.
+ * 4. MARGIN: Handled by the 'gap' property in the parent, creating space OUTSIDE the border, between this card and other cards.
+ */
+.card {
+    background: #fff;
+    flex-basis: 320px; /* Suggests a starting width for each card */
+    
+    /* Layer 3: The Border */
+    border: 1px solid #ddd;
+    
+    /* Layer 2: The Padding */
+    padding: 25px;
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lifts the card on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px; /* BOX MODEL: Space between the card's title and its description */
+    color: #007BFF;
+}
+
+
+/* --- Footer Styling --- */
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0; /* BOX MODEL: Vertical space inside the footer */
+    margin-top: 40px; /* BOX MODEL: Pushes the footer down from the last section */
+}
